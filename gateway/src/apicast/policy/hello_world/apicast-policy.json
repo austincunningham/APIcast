@@ -1,0 +1,22 @@
+{
+  "$schema": "http://apicast.io/policy-v1/schema#manifest#",
+  "name": "hello_world",
+  "summary": "hello_world: write policy summary",
+  "description": [
+      "hello_world: Write policy description"
+  ],
+  "version": "builtin",
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "overwrite": {
+        "description": "Overwrite flag used to indicate whether or not an existing header must be overwritten by this policy.",
+        "type": "boolean"
+      },
+      "secret": {
+        "description": "The additional static secret used for verifying the request.",
+        "type": "string"
+      }
+    }
+  }
+}

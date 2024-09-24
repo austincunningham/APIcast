@@ -1,0 +1,41 @@
+{
+   "services": [
+       {
+           "id": "1",
+           "backend_version": "1",
+           "proxy": {
+               "hosts": ["one"],
+               "api_backend": "https://echo-api.3scale.net:443",
+               "authentication_method":"2",
+               "backend": {
+                   "endpoint": "http://127.0.0.1:8081",
+                   "host": "backend"
+               },
+               "policy_chain": [
+                   {
+                       "name": "apicast.policy.apicast"
+                   }
+               ],
+               "proxy_rules": [
+                   {
+                       "http_method": "GET",
+                       "pattern": "/",
+                       "metric_system_name": "hits",
+                       "delta": 1,
+                       "parameters": [],
+                       "querystring_parameters": {}
+                   },
+                   {
+                       "http_method": "POST",
+                       "pattern": "/",
+                       "metric_system_name": "hits",
+                       "delta": 1,
+                       "parameters": [],
+                       "querystring_parameters": {}
+                   }
+               ]
+           }
+       }
+   ]
+}
+

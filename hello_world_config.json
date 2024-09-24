@@ -1,0 +1,36 @@
+{
+  "services": [
+    {
+      "proxy": {
+        "hosts": ["one"],
+        "api_backend": "https://echo-api.3scale.net:443",
+        "authentication_method":"2",
+        "backend": {
+            "endpoint": "http://127.0.0.1:8081",
+            "host": "backend"
+        },
+        "policy_chain": [
+          {
+            "name": "hello_world",
+            "version": "builtin",
+            "configuration": {
+              "overwrite": true,
+              "secret": "mysecret"
+            }
+          },
+          {
+            "name": "apicast.policy.upstream",
+            "configuration": {
+              "rules": [
+                {
+                  "regex": "/",
+                  "url": "http://echo:8081"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
